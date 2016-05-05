@@ -19,6 +19,7 @@ class View extends JFrame {
 	private JButton openButton;
 	private JButton undoButton;
 	private JButton redoButton;
+	private JButton btnEllipse;
 	private static UndoManager undoManager;
 	private String fileName;
 	// other buttons to be added as needed;
@@ -110,6 +111,7 @@ class View extends JFrame {
 		lineButton = new LineButton(undoManager, this, drawingPanel);
 		labelButton = new LabelButton(undoManager, this, drawingPanel);
 		selectButton = new SelectButton(undoManager, this, drawingPanel);
+		// ellipseButton = new EllipseButton(undoManager, this, drawingPanel);
 		deleteButton = new DeleteButton(undoManager);
 		deleteButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -125,36 +127,42 @@ class View extends JFrame {
 		buttonPanel.add(selectButton);
 
 		btnBspline = new JButton("Bspline");
-		btnBspline.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				model.setUI(NewSwingUI.getInstance());
-				drawingPanel = new DrawingPanel();
-				buttonPanel = new JPanel();
-				Container contentpane = getContentPane();
-				contentpane.add(buttonPanel, "North");
-				contentpane.add(drawingPanel);
-				
-				 Bspline test = new Bspline();
-			        PointMover mover = new PointMover(test);
-			        test.addMouseListener(mover);
-			        test.addMouseMotionListener(mover);
-//			        //JFrame f = new JFrame();
-//			        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//			        f.add(test);
-//			        f.add(test.getButtonPanel(), "Last");
-//			        f.setSize(500,500);
-//			        f.setLocation(200,200);
-//			        f.setVisible(true);
-		}
-		});
+		btnEllipse = new JButton("Ellipse");
+		btnEllipse = new EllipseButton(undoManager, this, drawingPanel);
+		//btnBspline = new Bspline();
+		
+
+		buttonPanel.add(btnEllipse);
+		// btnBspline.addActionListener(new ActionListener() {
+		// public void actionPerformed(ActionEvent e) {
+		//
+		// model.setUI(NewSwingUI.getInstance());
+		// drawingPanel = new DrawingPanel();
+		// buttonPanel = new JPanel();
+		// Container contentpane = getContentPane();
+		// contentpane.add(buttonPanel, "North");
+		// contentpane.add(drawingPanel);
+		//
+		// Bspline test = new Bspline();
+		// PointMover mover = new PointMover(test);
+		// test.addMouseListener(mover);
+		// test.addMouseMotionListener(mover);
+		//// //JFrame f = new JFrame();
+		//// f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		//// f.add(test);
+		//// f.add(test.getButtonPanel(), "Last");
+		//// f.setSize(500,500);
+		//// f.setLocation(200,200);
+		//// f.setVisible(true);
+		// }
+		// });
 		buttonPanel.add(btnBspline);
 		buttonPanel.add(deleteButton);
 		buttonPanel.add(saveButton);
 		buttonPanel.add(openButton);
 		buttonPanel.add(undoButton);
 		buttonPanel.add(redoButton);
-		this.setSize(600, 400);
+		this.setSize(700, 400);
 	}
 
 	public void refresh() {
