@@ -129,6 +129,7 @@ class View extends JFrame {
 		btnBspline = new JButton("Bspline");
 		btnEllipse = new JButton("Ellipse");
 		btnEllipse = new EllipseButton(undoManager, this, drawingPanel);
+		btnBspline = new BsplineButton(undoManager, this, drawingPanel);
 		//btnBspline = new Bspline();
 		
 
