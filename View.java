@@ -11,7 +11,6 @@ class View extends JFrame {
 	private JButton lineButton;
 
 	private JButton ellipse;
-	private JButton polygon;
 	private JButton move;
 	private JButton deleteButton;
 	private JButton labelButton;
@@ -21,7 +20,6 @@ class View extends JFrame {
 	private JButton undoButton;
 	private JButton redoButton;
 	private JButton btnEllipse;
-	private JButton btnPolygon;
 	private static UndoManager undoManager;
 	private String fileName;
 	// other buttons to be added as needed;
@@ -113,7 +111,7 @@ class View extends JFrame {
 		lineButton = new LineButton(undoManager, this, drawingPanel);
 		labelButton = new LabelButton(undoManager, this, drawingPanel);
 		selectButton = new SelectButton(undoManager, this, drawingPanel);
-		
+		// ellipseButton = new EllipseButton(undoManager, this, drawingPanel);
 		deleteButton = new DeleteButton(undoManager);
 		deleteButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -130,14 +128,12 @@ class View extends JFrame {
 
 		btnBspline = new JButton("Bspline");
 		btnEllipse = new JButton("Ellipse");
-		btnPolygon = new JButton("Polygon");
 		btnEllipse = new EllipseButton(undoManager, this, drawingPanel);
-		btnPolygon = new PolygonButton(undoManager, this, drawingPanel);
+		btnBspline = new BsplineButton(undoManager, this, drawingPanel);
 		//btnBspline = new Bspline();
 		
 
 		buttonPanel.add(btnEllipse);
-		buttonPanel.add(btnPolygon);
 		// btnBspline.addActionListener(new ActionListener() {
 		// public void actionPerformed(ActionEvent e) {
 		//

@@ -37,3 +37,8 @@
 /EllipseButton$MouseHandler.class
 /EllipseButton.class
 /EllipseCommand.class
+/BsplineButton.class
+/BsplineButton$MouseHandler.class
+/SplineDraw.class
+/SplineDraw$1.class
+/SplineDraw$2.class

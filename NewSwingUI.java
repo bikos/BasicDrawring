@@ -2,6 +2,8 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.geom.Ellipse2D;
 
+import javax.swing.JFrame;
+
 public class NewSwingUI implements UIContext {
 	private Graphics graphics;
 	private static NewSwingUI swingUI;
@@ -123,6 +125,19 @@ public class NewSwingUI implements UIContext {
 	}
 	
 	public void draw(Bspline bspline) {
+		
+		Bspline test = new Bspline();
+		PointMover mover = new PointMover(test);
+        test.addMouseListener(mover);
+        test.addMouseMotionListener(mover);
+        JFrame f = new JFrame();
+        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        f.add(test);
+        f.add(test.getButtonPanel(), "Last");
+        f.setSize(500,500);
+        f.setLocation(200,200);
+        f.setVisible(true);
+ 
 
 		
 
