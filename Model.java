@@ -8,6 +8,7 @@ import java.util.*;
 public class Model {
   private Vector itemList;
   private Vector selectedList;
+  private Vector moveList;
   //  list of "currently selected" items
   private static UIContext uiContext;
   private static View view;
@@ -31,6 +32,26 @@ public class Model {
       view.refresh();
     }
   }
+  
+  public void moveSelected(Item item) {
+	// marks an item as selected by moving it to the
+	// selceted list.
+	    if (itemList.contains(item)) {
+	      itemList.remove(item);
+	      moveList.add(item);
+	      view.refresh();
+	    }
+	  }
+  
+  public void replaceSelect(Item item) {
+	    if (moveList.contains(item)) {
+	      moveList.remove(item);
+	      itemList.add(item);
+	      view.refresh();
+	    }
+	  }
+  
+  
   public void unSelect(Item item) {
     if (selectedList.contains(item)) {
       selectedList.remove(item);
@@ -86,4 +107,5 @@ public class Model {
       cnfe.printStackTrace();
     }
   }
+  
 }

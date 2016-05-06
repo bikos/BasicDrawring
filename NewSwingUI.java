@@ -112,6 +112,7 @@ public class NewSwingUI implements UIContext {
 
 			graphics.drawLine(x1, y1, x2, y2);
 
+<<<<<<< HEAD
 			for (Integer i = newSize + 2; i <= oldSize; i++) {
 				if (distance(x1, y1, x2, y2) > 10) {
 					Integer tempX = listX.get(i);
@@ -121,6 +122,22 @@ public class NewSwingUI implements UIContext {
 					y2 = tempY;
 
 				}
+=======
+			Integer size = listX.size();
+			
+			
+			if (distance(x1, y1, x2, y2)>10){
+				
+			}
+				
+			for (Integer i=2; i <= size; i++){
+				Integer tempX = listX.get(i);
+				Integer tempY = listY.get(i);
+				graphics.drawLine(x2, y2, tempX, tempY);
+				x2 = tempX;
+				y2 = tempY;
+				
+>>>>>>> a12785eb08e3a1a3e1d523cb181713bb7f9dc924
 			}
 			System.out.println(x1 + " " + y1 + " " + x2 + " " + y2);
 

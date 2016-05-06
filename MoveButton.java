@@ -1,13 +1,13 @@
 import javax.swing.*;
 import java.awt.event.*;
-public class SelectButton  extends JButton implements ActionListener {
+public class MoveButton  extends JButton implements ActionListener {
   protected JPanel drawingPanel;
   protected View view;
   private MouseHandler mouseHandler;
   private MoveCommand moveCommand;
   private UndoManager undoManager;
-  public SelectButton(UndoManager undoManager, View jFrame, JPanel jPanel) {
-    super("Select");
+  public MoveButton(UndoManager undoManager, View jFrame, JPanel jPanel) {
+    super("Move");
     addActionListener(this);
     view = jFrame;
     drawingPanel = jPanel;
@@ -15,6 +15,9 @@ public class SelectButton  extends JButton implements ActionListener {
     mouseHandler = new MouseHandler();
   }
   public void actionPerformed(ActionEvent event) {
+	  
+	  
+	  
     moveCommand = new MoveCommand();
     drawingPanel.addMouseListener(mouseHandler);
     undoManager.beginCommand(moveCommand);
@@ -27,3 +30,4 @@ public class SelectButton  extends JButton implements ActionListener {
     }
   }
 }
+
