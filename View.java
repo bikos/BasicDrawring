@@ -9,9 +9,9 @@ class View extends JFrame {
 	private JPanel buttonPanel;
 	private JPanel filePanel;
 	private JButton lineButton;
-
+	
 	private JButton ellipse;
-	private JButton move;
+	private MoveButton moveButton;
 	private JButton deleteButton;
 	private JButton labelButton;
 	private JButton selectButton;
@@ -111,6 +111,7 @@ class View extends JFrame {
 		lineButton = new LineButton(undoManager, this, drawingPanel);
 		labelButton = new LabelButton(undoManager, this, drawingPanel);
 		selectButton = new SelectButton(undoManager, this, drawingPanel);
+		moveButton = new MoveButton(undoManager, this, drawingPanel);
 		// ellipseButton = new EllipseButton(undoManager, this, drawingPanel);
 		deleteButton = new DeleteButton(undoManager);
 		deleteButton.addActionListener(new ActionListener() {
@@ -119,13 +120,16 @@ class View extends JFrame {
 		});
 		saveButton = new SaveButton(undoManager, this);
 		openButton = new OpenButton(undoManager, this);
+		
 		undoButton = new UndoButton(undoManager);
 		redoButton = new RedoButton(undoManager);
 
 		buttonPanel.add(lineButton);
 		buttonPanel.add(labelButton);
 		buttonPanel.add(selectButton);
+		
 
+		//MoveButton = new JButton("Move");
 		btnPolygon = new JButton("Polygon");
 		btnEllipse = new JButton("Ellipse");
 		btnEllipse = new EllipseButton(undoManager, this, drawingPanel);
@@ -161,6 +165,7 @@ class View extends JFrame {
 		buttonPanel.add(deleteButton);
 		buttonPanel.add(saveButton);
 		buttonPanel.add(openButton);
+		buttonPanel.add(moveButton);
 		buttonPanel.add(undoButton);
 		buttonPanel.add(redoButton);
 		this.setSize(700, 400);

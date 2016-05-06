@@ -110,7 +110,10 @@ public class NewSwingUI implements UIContext {
 			Integer size = listX.size();
 			
 			
-			if (distance(x1, y1, x2, y2)>10)
+			if (distance(x1, y1, x2, y2)>10){
+				
+			}
+				
 			for (Integer i=2; i <= size; i++){
 				Integer tempX = listX.get(i);
 				Integer tempY = listY.get(i);
