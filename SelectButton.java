@@ -4,7 +4,7 @@ public class SelectButton  extends JButton implements ActionListener {
   protected JPanel drawingPanel;
   protected View view;
   private MouseHandler mouseHandler;
-  private SelectCommand selectCommand;
+  private MoveCommand moveCommand;
   private UndoManager undoManager;
   public SelectButton(UndoManager undoManager, View jFrame, JPanel jPanel) {
     super("Select");
@@ -15,15 +15,15 @@ public class SelectButton  extends JButton implements ActionListener {
     mouseHandler = new MouseHandler();
   }
   public void actionPerformed(ActionEvent event) {
-    selectCommand = new SelectCommand();
+    moveCommand = new MoveCommand();
     drawingPanel.addMouseListener(mouseHandler);
-    undoManager.beginCommand(selectCommand);
+    undoManager.beginCommand(moveCommand);
   }
   private class MouseHandler extends MouseAdapter {
     public void mouseClicked(MouseEvent event) {
-      selectCommand.setPoint(View.mapPoint(event.getPoint()));
+      moveCommand.setPoint(View.mapPoint(event.getPoint()));
       drawingPanel.removeMouseListener(this);
-      undoManager.endCommand(selectCommand);
+      undoManager.endCommand(moveCommand);
     }
   }
 }
