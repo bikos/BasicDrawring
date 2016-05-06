@@ -24,7 +24,7 @@ class View extends JFrame {
 	private String fileName;
 	// other buttons to be added as needed;
 	private static Model model;
-	private JButton btnBspline;
+	private JButton btnPolygon;
 
 	public UIContext getUI() {
 		return uiContext;
@@ -126,10 +126,10 @@ class View extends JFrame {
 		buttonPanel.add(labelButton);
 		buttonPanel.add(selectButton);
 
-		btnBspline = new JButton("Bspline");
+		btnPolygon = new JButton("Polygon");
 		btnEllipse = new JButton("Ellipse");
 		btnEllipse = new EllipseButton(undoManager, this, drawingPanel);
-		btnBspline = new BsplineButton(undoManager, this, drawingPanel);
+		btnPolygon = new PolygonButton(undoManager, this, drawingPanel);
 		//btnBspline = new Bspline();
 		
 
@@ -157,7 +157,7 @@ class View extends JFrame {
 		//// f.setVisible(true);
 		// }
 		// });
-		buttonPanel.add(btnBspline);
+		buttonPanel.add(btnPolygon);
 		buttonPanel.add(deleteButton);
 		buttonPanel.add(saveButton);
 		buttonPanel.add(openButton);

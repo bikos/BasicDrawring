@@ -2,7 +2,7 @@ import java.awt.*;
 import java.text.*;
 public class PolygonCommand extends Command {
   private Polygon polygon;
-  private int pointCount;
+  protected int pointCount;
   public PolygonCommand() {
     this(null, null);
     pointCount = 0;

@@ -1,6 +1,9 @@
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Point;
 import java.awt.geom.Ellipse2D;
+import java.awt.geom.GeneralPath;
+import java.util.ArrayList;
 
 import javax.swing.JFrame;
 
@@ -79,7 +82,7 @@ public class NewSwingUI implements UIContext {
 			} else if (i1 < i3 && i2 > i4) {
 				graphics.drawOval(i1, i4, width, height);
 			} else if (i1 > i3 && i2 < i4) {
-				
+
 				graphics.drawOval(i3, i2, width, height);
 			}
 
@@ -93,57 +96,52 @@ public class NewSwingUI implements UIContext {
 
 	public void draw(Polygon polygon) {
 
-		int i1 = 0;
-		int i2 = 0;
-		int i3 = 0;
-		int i4 = 0;
-		int i5 = 0;
-		int i6 = 0;
-		if (polygon.getPoint1() != null) {
-			i1 = Math.round((float) (polygon.getPoint1().getX()));
-			i2 = Math.round((float) (polygon.getPoint1().getY()));
-			if (polygon.getPoint2() != null) {
-				i3 = Math.round((float) (polygon.getPoint2().getX()));
-				i4 = Math.round((float) (polygon.getPoint2().getY()));
-			}
-			if (polygon.getPoint3() != null){
-				i5 = Math.round((float) (polygon.getPoint2().getX()));
-				i6 = Math.round((float) (polygon.getPoint2().getY()));
+		ArrayList<Integer> listX = PolygonButton.listX;
+		ArrayList<Integer> listY = PolygonButton.listY;
+		try {
+			Integer x1 = listX.get(0);
+			Integer y1 = listY.get(0);
+
+			Integer x2 = listX.get(1);
+			Integer y2 = listY.get(1);
+
+			graphics.drawLine(x1, y1, x2, y2);
+
+			Integer size = listX.size();
+			
+			
+			if (distance(x1, y1, x2, y2)>10)
+			for (Integer i=2; i <= size; i++){
+				Integer tempX = listX.get(i);
+				Integer tempY = listY.get(i);
+				graphics.drawLine(x2, y2, tempX, tempY);
+				x2 = tempX;
+				y2 = tempY;
 				
 			}
-			else {
-				i3 = i1;
-				i4 = i2;
-			}
 			
-			
-			graphics.drawLine(i1, i2, i3, i4);
-			//graphics.drawLine(i3, i4, i5, i6);
+
+
+			// graphics.drawLine(x1, y1, x2, y2);
+
+		} 
+		
+		catch (Exception e) {
 
 		}
 
-	}
-	
-	public void draw(Bspline bspline) {
-		
-		Bspline test = new Bspline();
-		PointMover mover = new PointMover(test);
-        test.addMouseListener(mover);
-        test.addMouseMotionListener(mover);
-        JFrame f = new JFrame();
-        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        f.add(test);
-        f.add(test.getButtonPanel(), "Last");
-        f.setSize(500,500);
-        f.setLocation(200,200);
-        f.setVisible(true);
- 
-
-		
+		// System.out.println("here");
 
 	}
+
 
 	public void draw(Item item) {
 		System.out.println("Cant draw unknown Item \n");
 	}
+	
+	protected double distance(Integer x1, Integer y1, Integer x2, Integer y2) {
+	    double xDifference = x2 - x1;
+	    double yDifference = y2 - y1;
+	    return ((double) (Math.sqrt(xDifference * xDifference + yDifference * yDifference)));
+	  }
 }

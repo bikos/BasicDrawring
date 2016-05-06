@@ -42,3 +42,7 @@
 /SplineDraw.class
 /SplineDraw$1.class
 /SplineDraw$2.class
+/Polygon.class
+/PolygonButton$MouseHandler.class
+/PolygonButton.class
+/PolygonCommand.class
