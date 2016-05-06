@@ -8,8 +8,10 @@ import java.util.ArrayList;
 import javax.swing.JFrame;
 
 public class NewSwingUI implements UIContext {
+
 	private Graphics graphics;
 	private static NewSwingUI swingUI;
+	private Integer tempSize = 0;
 
 	private NewSwingUI() {
 	}
@@ -95,37 +97,43 @@ public class NewSwingUI implements UIContext {
 	}
 
 	public void draw(Polygon polygon) {
-
+		Integer newSize = 0;
 		ArrayList<Integer> listX = PolygonButton.listX;
 		ArrayList<Integer> listY = PolygonButton.listY;
-		try {
-			Integer x1 = listX.get(0);
-			Integer y1 = listY.get(0);
+		Integer oldSize = listX.size();
+		
 
-			Integer x2 = listX.get(1);
-			Integer y2 = listY.get(1);
+		try {
+			Integer x1 = listX.get(newSize);
+			Integer y1 = listY.get(newSize);
+
+			Integer x2 = listX.get(newSize + 1);
+			Integer y2 = listY.get(newSize + 1);
 
 			graphics.drawLine(x1, y1, x2, y2);
 
-			Integer size = listX.size();
-			
-			
-			if (distance(x1, y1, x2, y2)>10)
-			for (Integer i=2; i <= size; i++){
-				Integer tempX = listX.get(i);
-				Integer tempY = listY.get(i);
-				graphics.drawLine(x2, y2, tempX, tempY);
-				x2 = tempX;
-				y2 = tempY;
-				
-			}
-			
+			for (Integer i = newSize + 2; i <= oldSize; i++) {
+				if (distance(x1, y1, x2, y2) > 10) {
+					Integer tempX = listX.get(i);
+					Integer tempY = listY.get(i);
+					graphics.drawLine(x2, y2, tempX, tempY);
+					x2 = tempX;
+					y2 = tempY;
 
+				}
+			}
+			System.out.println(x1 + " " + y1 + " " + x2 + " " + y2);
+
+			{
+				//System.out.println(distance(x1, y1, x2, y2));
+				PolygonButton.endPoly = true;
+
+			}
 
 			// graphics.drawLine(x1, y1, x2, y2);
 
-		} 
-		
+		}
+
 		catch (Exception e) {
 
 		}
@@ -134,14 +142,13 @@ public class NewSwingUI implements UIContext {
 
 	}
 
-
 	public void draw(Item item) {
 		System.out.println("Cant draw unknown Item \n");
 	}
-	
+
 	protected double distance(Integer x1, Integer y1, Integer x2, Integer y2) {
-	    double xDifference = x2 - x1;
-	    double yDifference = y2 - y1;
-	    return ((double) (Math.sqrt(xDifference * xDifference + yDifference * yDifference)));
-	  }
+		double xDifference = x2 - x1;
+		double yDifference = y2 - y1;
+		return ((double) (Math.sqrt(xDifference * xDifference + yDifference * yDifference)));
+	}
 }
